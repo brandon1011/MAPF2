@@ -1,7 +1,7 @@
 TARGET=mapf
 CC=g++
 CFLAGS=-g -Wall -Wextra -std=c++11 -w
-SRCS=src/Grid.cpp src/Bfs.cpp
+SRCS=src/Grid.cpp src/Bfs.cpp src/Heuristic.cpp
 TRASH=${TARGET}
 
 ifdef GPROF

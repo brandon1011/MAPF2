@@ -1,3 +1,6 @@
+#ifndef BFS_H
+#define BFS_H
+
 #include "Grid.h"
 
 #include <unordered_set>
@@ -15,7 +18,7 @@ private:
 		int 	cost;
 		Node(Point p, int c): pos(p), cost(c) {}
 	};
-	
+
 	list<Node> 			open_list;
 	unordered_set<int>	closed_list;
 	Grid*	grid;
@@ -31,3 +34,5 @@ inline
 int Bfs::cost() {
 	return soln_cost;
 }
+
+#endif //BFS_H

@@ -1,9 +1,6 @@
 #include "Bfs.h"
 #include <limits>
 
-#include <iostream>
-using namespace std;
-
 Bfs::Bfs(Grid* g, Point init, Point goal): grid(g), goal(goal) {
 	open_list.push_back(Node(init,0));
 	search();
@@ -17,9 +14,6 @@ void Bfs::search() {
 		auto adj_arr = grid->adj(select.pos);
 
 		closed_list.insert(grid->hash(select.pos));	/* Add selected node to closed list */
-
-		/*cout << "Expanding point (" << select.pos.x << "," << select.pos.y << ")"
-			<< "Cost = " << select.cost << endl;*/
 
 		if (select.pos == goal) {
 			soln_cost = select.cost;
