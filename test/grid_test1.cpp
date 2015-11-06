@@ -1,5 +1,6 @@
 #include "../src/Grid.h"
 #include "../src/Bfs.h"
+#include "../src/Heuristic.h"
 
 #include <iostream>
 using namespace std;
@@ -23,6 +24,13 @@ int main() {
 
 	Bfs bfs(&g, Point(0,0), Point(0,3));
 	cout << "Bfs cost " << bfs.cost() << endl;
+
+	cout << "Starting preprocessing step\n";
+	Heuristic h(&g);
+	cout << "Finished preprocessing step\n";
+
+	cout << "Heuristic value for (0,0)-->(5,2) = " << h.find(Point(0,0), Point(5,2)) << endl;
+	cout << "Heuristic value for (5,2)-->(0,0) = " << h.find(Point(5,2), Point(0,0)) << endl;
 
 	return 0;
 }
