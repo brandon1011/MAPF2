@@ -2,7 +2,7 @@
 #ifndef GRID_H
 #define GRID_H
 
-#define DIM 8	//Change to 8 from 4
+#define DIM 8	/* Num of possible moves (N, S, E, W, ...) */
 
 #include <string>
 #include <memory>
@@ -19,13 +19,15 @@ struct Point {
 	bool operator==(const Point& lhs) {
 		return (this->x == lhs.x && this->y == lhs.y);
 	};
+
+	Point move(int dir);
 };
 
 class Grid {
 public:
 	unique_ptr<bool[]>	adj(const Point& pos) const;
 	bool	clear(const Point& pos) const;
-	int		hash_pt(Point* p);
+	int		hash(const Point& p);
 	Point	unhash(int hash);	
 	void	display(void);
 	Point	dim(void);	// Dimension of the grid
@@ -40,8 +42,8 @@ private:
 };
 
 inline
-int Grid::hash_pt(Point* p) {
-	return (p->x)*dimY + p->y;
+int Grid::hash(const Point& p) {
+	return (p.x)*dimY + p.y;
 }
 inline
 Point Grid::dim(void) {
@@ -57,4 +59,5 @@ inline
 Point Grid::unhash(int hash) {
 	return Point((hash/dimY),(hash%dimY));
 }
+
 #endif //GRID_H

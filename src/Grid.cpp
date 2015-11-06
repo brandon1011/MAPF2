@@ -71,3 +71,37 @@ void Grid::display(void) {
 	}
 }
 
+Point Point::move(int dir) {
+	Point p(this->x, this->y);
+	switch(dir) {
+	case NORTH:
+		p.y++;
+		return p;
+	case SOUTH:
+		p.y--;
+		return p;
+	case EAST:
+		p.x++;
+		return p;
+	case WEST:
+		p.x--;
+		return p;
+	case NE:
+		p.y++;
+		p.x++;
+		return p;
+	case NW:
+		p.y++;
+		p.x--;
+		return p;
+	case SE:
+		p.y--;
+		p.x++;
+		return p;
+	case SW:
+		p.y--;
+		p.x--;
+	default:
+		return p;
+	}
+}
